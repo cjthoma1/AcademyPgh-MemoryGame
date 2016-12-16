@@ -29,19 +29,25 @@
 	  return array;
   }
   name_arr = shuffleArray(name_arr);
+  
   //function called after every card is selected
+  
 function match(box) {
 	//remove original cover and apply the class name/card depending on its order in the array
 	$("#" + box).removeClass("cover");
 			$("#" + box).addClass(name_arr[box]);
 			choice = name_arr[box];
+			
 //push selected id into a box array
 boxarr.push(box);
+
 //push selected class into choice array
 choicearray.push(choice);
+
 //conditional used to check if id in postion 0 of the array matches the id of position 1
 //if true then pop the element in the box array and the choice array
 if (boxarr[0]==boxarr[1]){ boxarr.pop(); choicearray.pop()}
+
 //if choice array has a length of greater than 2 then set a timeout on Change() to reveal the 2 cards the user has selected
 if (choicearray.length == 2)
 	{setTimeout(Change, 750); boxarr=[];
@@ -49,14 +55,15 @@ if (choicearray.length == 2)
 else
 	{Change(); boxarray=[];}
 }
+
 //Change() used to determine whether the 2 cards match or not
 function Change()
 {
 	if (choicearray.length == 2)
 
 {
+	
 if (choicearray[0] == choicearray[1])
-
 	{
 		$("." + choicearray[0]).removeClass(choicearray[0]).addClass("transparent");
 		choicearray=[];
@@ -77,8 +84,6 @@ if (choicearray[0] == choicearray[1])
 		return;
 	}
 }
-
-
   </script>
 
   </head>
