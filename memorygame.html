@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title> AcademyPGH Memory Game</title>
+	<link rel= "stylesheet" href="style.css">
+	
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous">
+  </script>
+  
+  <script>
+  //array of class names/ matching cards
+  name_arr =["josh", "jean", "caitlin", "josh", "orion","bridget", "bridget", "link", "jean", "caitlin", "orion", "link"];
+  choicearray = [];
+  boxarr=[];
+  //function used to shuffle our array
+  function shuffleArray(array){
+	  for(var i = array.length-1; i >0; i--) {
+		  var j = Math.floor(Math.random() * i+1);
+		  var temp=array[i];
+		  array[i]= array[j];
+		  array[j]=temp;
+	  }
+	  temp=array[6];
+	  array[6]=array[0];
+	  array[0]=temp;
+	  return array;
+  }
+  name_arr = shuffleArray(name_arr);
+  //function called after every card is selected
+function match(box) {
+	//remove original cover and apply the class name/card depending on its order in the array
+	$("#" + box).removeClass("cover");
+			$("#" + box).addClass(name_arr[box]);
+			choice = name_arr[box];
+boxarr.push(box);
+choicearray.push(choice);
+if (boxarr[0]==boxarr[1]){ boxarr.pop(); choicearray.pop()}
+if (choicearray.length == 2)
+	{setTimeout(Change, 750); boxarr=[];
+}
+else
+	{Change(); boxarray=[];}
+}
+
+function Change()
+{
+	if (choicearray.length == 2)
+
+{
+if (choicearray[0] == choicearray[1])
+
+	{
+		$("." + choicearray[0]).removeClass(choicearray[0]).addClass("transparent");
+		choicearray=[];
+		if($(".box").length ==$(".transparent").length){
+			$("body").css("background-image","url('images/fireworks.gif')");
+		}
+	}
+	else
+	{
+		$("." + choicearray[0]).removeClass(choicearray[0]).addClass("cover");
+		$("." + choicearray[1]).removeClass(choicearray[1]).addClass("cover");
+		choicearray=[];
+	}
+
+}	
+	else 
+	{
+		return;
+	}
+}
+
+
+  </script>
+
+  </head>
+  <body>
+  <section class="container">
+  <div id = "0" class = "box cover" onClick = "match(0)"></div>
+  <div id = "1" class = "box cover" onClick = "match(1)"></div>
+  <div id = "2" class = "box cover" onClick = "match(2)"></div>
+  <div id = "3" class = "box cover" onClick = "match(3)"></div>
+  <div id = "4" class = "box cover" onClick = "match(4)"></div>
+  <div id = "5" class = "box cover" onClick = "match(5)"></div>
+  <div id = "6" class = "box cover" onClick = "match(6)"></div>
+  <div id = "7" class = "box cover" onClick = "match(7)"></div>
+  <div id = "8" class = "box cover" onClick = "match(8)"></div>
+  <div id = "9" class = "box cover" onClick = "match(9)"></div>
+  <div id = "10" class = "box cover" onClick = "match(10)"></div>
+  <div id = "11" class = "box cover" onClick = "match(11)"></div>
+  </section>
+
+  </body>
+  </html>
