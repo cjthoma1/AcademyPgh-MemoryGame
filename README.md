@@ -1,6 +1,6 @@
-# README
+#Academy Pgh Memory Game
 
-Memory Game written in HTML/CSS/JS
+Written in HTML/CSS/JS
 
 * Matching card game using AcademyPgh student photos as our cards
 * Matching cards turn transparent revealing a special background hidden behind game cards
